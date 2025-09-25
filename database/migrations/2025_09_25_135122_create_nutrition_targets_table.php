@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('nutrition_targets', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->date('effective_from')->index();
+
+            $table->integer('calorie_target');
+            $table->integer('protein_gram');
+            $table->integer('carbohydrate_gram');
+            $table->integer('fat_gram');
+
+            $table->string('method')->default('katch_mcardle_v1');
+            $table->string('reason')->default('onboarding');
+            $table->json('inputs_json')->nullable();
+
             $table->timestamps();
         });
     }
