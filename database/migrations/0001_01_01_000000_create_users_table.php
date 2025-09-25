@@ -14,8 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->char('public_id', 26)->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('whatsapp_id')->unique();
+            $table->string('whatsapp_phone')->nullable();
+            $table->enum('unit_weight', ['kg', 'lb'])->default('kg');
+            $table->enum('unit_for_exercises', ['kg', 'lb'])->default('kg');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
