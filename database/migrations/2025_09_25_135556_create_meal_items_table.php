@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('meal_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('meal_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->string('name');
+            $table->float('quantity');
+            $table->string('unit');
+            $table->float('calories');
+            $table->float('protein_grams');
+            $table->float('carbs_grams');
+            $table->float('fat_grams');
+            $table->float('confidence');
+
             $table->timestamps();
         });
     }
