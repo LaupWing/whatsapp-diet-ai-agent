@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->date('date');
+            $table->string('label')->nullable();
+            $table->string('source')->default('manual');
+            $table->text('notes')->nullable();
             $table->timestamps();
+
+            $table->index(['user_id', 'date']);
         });
     }
 
