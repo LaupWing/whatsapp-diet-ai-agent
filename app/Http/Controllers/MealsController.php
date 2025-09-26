@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMealRequest;
 use App\Http\Resources\MealResource;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,23 +33,21 @@ class MealsController extends Controller
     }
 
     /**
-     * GET /diet/meals/today
+     * POST /diet/food_entries
      */
-    public function today(Request $request): JsonResponse
+    public function store(StoreMealRequest $request): JsonResponse
     {
         /** @var \App\Models\User $user */
         $user = $request->attributes->get('user');
 
-        $meals = $user->meals()
-            ->with('items')
-            ->today()
-            ->oldest('id')
-            ->get();
+        $meal = $user->meals()->create($request->safe()->except('items'));
 
-        return response()->json([
-            'date' => today()->toDateString(),
-            'meals' => MealResource::collection($meals)
-        ]);
+        $meal->items()->createMany($request->validated('items'));
+
+        return response()->json(
+            new MealResource($meal->load('items')),
+            201
+        );
     }
 
     /**

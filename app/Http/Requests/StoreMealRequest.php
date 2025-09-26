@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreMealRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'date' => ['required', 'date', 'date_format:Y-m-d'],
+            'label' => ['required', 'string', 'max:255'],
+            'source' => ['nullable', 'string', 'in:manual,api,import'],
+            'notes' => ['nullable', 'string', 'max:1000'],
+
+            'items' => ['required', 'array', 'min:1'],
+            'items.*.name' => ['required', 'string', 'max:255'],
+            'items.*.quantity' => ['required', 'numeric', 'min:0'],
+            'items.*.unit' => ['required', 'string', 'max:50'],
+            'items.*.calories' => ['required', 'numeric', 'min:0'],
+            'items.*.protein_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.carbs_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.fat_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.confidence' => ['nullable', 'numeric', 'min:0', 'max:1'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'date.required' => 'Date is required and cannot be null.',
+            'date.date_format' => 'Date must be in Y-m-d format.',
+            'label.required' => 'Meal label is required.',
+
+            'items.required' => 'Items array is required.',
+            'items.min' => 'At least one item is required.',
+            'items.*.name.required' => 'Item name is required.',
+            'items.*.quantity.required' => 'Item quantity is required.',
+            'items.*.unit.required' => 'Item unit is required.',
+            'items.*.calories.required' => 'Item calories is required.',
+            'items.*.protein_grams.required' => 'Item protein_grams is required.',
+            'items.*.carbs_grams.required' => 'Item carbs_grams is required.',
+            'items.*.fat_grams.required' => 'Item fat_grams is required.',
+        ];
+    }
+}
