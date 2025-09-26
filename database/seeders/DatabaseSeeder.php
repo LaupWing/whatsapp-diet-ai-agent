@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\WeightUnit;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,15 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::firstOrCreate(
-            ['email' => 'test@example.com'],
+            ['whatsapp_id' => '+31123456789'],
             [
                 'name' => 'Test User',
+                'email' => 'test@example.com',
                 'password' => Hash::make('password'),
-                'email_verified_at' => now(),
+                'whatsapp_phone' => '31123456789',
+                'unit_weight' => WeightUnit::KG,
+                'unit_for_exercises' => WeightUnit::KG,
             ]
         );
+
+        $this->call([
+            SampleDataSeeder::class,
+        ]);
     }
 }
