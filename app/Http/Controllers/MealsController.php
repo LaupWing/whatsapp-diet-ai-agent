@@ -52,43 +52,36 @@ class MealsController extends Controller
     }
 
     /**
-     * GET /diet/macros/today
-     * Returns today's totals: calories, protein_grams, carbs_grams, fat_grams.
+     * GET /diet/summary/today
+     * Returns today's meals AND macro totals in one response
      */
-    public function macrosToday(Request $request): JsonResponse
+    public function todaySummary(Request $request): JsonResponse
     {
         /** @var \App\Models\User $user */
         $user = $request->attributes->get('user');
-        $date = Carbon::today()->toDateString();
 
-        $row = DB::table('meal_items')
-            ->join('meals', 'meal_items.meal_id', '=', 'meals.id')
-            ->where('meals.user_id', $user->id)
-            ->whereDate('meals.date', $date)
-            ->selectRaw('
-                COALESCE(SUM(meal_items.calories), 0)        as calories,
-                COALESCE(SUM(meal_items.protein_grams), 0)   as protein_grams,
-                COALESCE(SUM(meal_items.carbs_grams), 0)     as carbs_grams,
-                COALESCE(SUM(meal_items.fat_grams), 0)       as fat_grams,
-                COUNT(meal_items.id)                          as items_count
-            ')
-            ->first();
+        // Step 1: Get all today's meals with their items (eager loading)
+        $meals = $user->meals()
+            ->with('items')      // Eager load items to avoid N+1
+            ->today()            // Uses your existing scope
+            ->oldest('id')       // Order by oldest first
+            ->get();
 
-        $mealsCount = DB::table('meals')
-            ->where('user_id', $user->id)
-            ->whereDate('date', $date)
-            ->count();
+        // Step 2: Flatten all items from all meals into one collection
+        $allItems = $meals->flatMap->items;
 
+        // Step 3: Build the response
         return response()->json([
-            'date'   => $date,
+            'date' => today()->toDateString(),
+            'meals' => MealResource::collection($meals),
             'totals' => [
-                'calories'      => (float) $row->calories,
-                'protein_grams' => (float) $row->protein_grams,
-                'carbs_grams'   => (float) $row->carbs_grams,
-                'fat_grams'     => (float) $row->fat_grams,
+                'calories' => $allItems->sum('calories'),
+                'protein_grams' => $allItems->sum('protein_grams'),
+                'carbs_grams' => $allItems->sum('carbs_grams'),
+                'fat_grams' => $allItems->sum('fat_grams'),
             ],
-            'meals_count' => $mealsCount,
-            'items_count' => (int) $row->items_count,
+            'meals_count' => $meals->count(),
+            'items_count' => $allItems->count(),
         ]);
     }
 }
