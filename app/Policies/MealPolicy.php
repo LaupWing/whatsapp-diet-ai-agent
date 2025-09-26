@@ -53,7 +53,7 @@ class MealPolicy
      */
     public function restore(User $user, Meal $meal): bool
     {
-        return false;
+        return $user->id === $meal->user_id;;
     }
 
     /**
