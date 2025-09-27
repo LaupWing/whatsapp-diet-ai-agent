@@ -18,7 +18,6 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->date('date');
             $table->string('label')->nullable();
             $table->string('source')->default('manual');
             $table->text('notes')->nullable();

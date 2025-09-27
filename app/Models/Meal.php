@@ -10,12 +10,11 @@ class Meal extends Model
 {
     protected $fillable = [
         'user_id',
-        'date',
+
         'label',
         'source',
         'notes'
     ];
-    protected $casts = ['date' => 'date'];
 
     public function user(): BelongsTo
     {
@@ -31,7 +30,7 @@ class Meal extends Model
     {
         return $query->when($date, function ($q) use ($date) {
             try {
-                $q->whereDate('date', $date);
+                $q->whereDate('created_at', $date);
             } catch (\Exception $e) {
                 abort(422, 'Invalid date format. Use YYYY-MM-DD.');
             }
@@ -40,6 +39,6 @@ class Meal extends Model
 
     public function scopeToday($query)
     {
-        return $query->whereDate('date', today());
+        return $query->whereDate('created_at', today());
     }
 }
