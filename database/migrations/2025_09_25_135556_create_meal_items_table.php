@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('name');
             $table->float('quantity');
             $table->string('unit');
-            $table->float('calories');
-            $table->float('protein_grams');
-            $table->float('carbs_grams');
-            $table->float('fat_grams');
+            $table->float('total_calories');
+            $table->float('total_protein_grams');
+            $table->float('total_carbs_grams');
+            $table->float('total_fat_grams');
+            $table->float('total_grams');
             $table->float('confidence');
 
             $table->timestamps();
