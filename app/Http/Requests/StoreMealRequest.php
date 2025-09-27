@@ -13,6 +13,7 @@ class StoreMealRequest extends FormRequest
 
     public function rules(): array
     {
+        logger()->info('Validating StoreMealRequest', $this->all());
         return [
             'label' => ['required', 'string', 'max:255'],
             'source' => ['nullable', 'string', 'in:manual,api,import'],
