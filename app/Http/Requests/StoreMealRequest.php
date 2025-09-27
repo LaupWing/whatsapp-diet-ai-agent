@@ -14,7 +14,6 @@ class StoreMealRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => ['required', 'date', 'date_format:Y-m-d'],
             'label' => ['required', 'string', 'max:255'],
             'source' => ['nullable', 'string', 'in:manual,api,import'],
             'notes' => ['nullable', 'string', 'max:1000'],
@@ -43,10 +42,10 @@ class StoreMealRequest extends FormRequest
             'items.*.name.required' => 'Item name is required.',
             'items.*.quantity.required' => 'Item quantity is required.',
             'items.*.unit.required' => 'Item unit is required.',
-            'items.*.calories.required' => 'Item calories is required.',
-            'items.*.protein_grams.required' => 'Item protein_grams is required.',
-            'items.*.carbs_grams.required' => 'Item carbs_grams is required.',
-            'items.*.fat_grams.required' => 'Item fat_grams is required.',
+            'items.*.total_calories.required' => 'Item calories is required.',
+            'items.*.total_protein_grams.required' => 'Item protein_grams is required.',
+            'items.*.total_carbs_grams.required' => 'Item carbs_grams is required.',
+            'items.*.total_fat_grams.required' => 'Item fat_grams is required.',
         ];
     }
 }
