@@ -12,19 +12,21 @@ class MealItem extends Model
         'name',
         'quantity',
         'unit',
-        'calories',
-        'protein_grams',
-        'carbs_grams',
-        'fat_grams',
+        'total_calories',
+        'total_protein_grams',
+        'total_carbs_grams',
+        'total_fat_grams',
+        'total_grams',
         'confidence',
     ];
 
     protected $casts = [
         'quantity' => 'float',
-        'calories' => 'float',
-        'protein_grams' => 'float',
-        'carbs_grams' => 'float',
-        'fat_grams' => 'float',
+        'total_calories' => 'float',
+        'total_protein_grams' => 'float',
+        'total_carbs_grams' => 'float',
+        'total_fat_grams' => 'float',
+        'total_grams' => 'float',
         'confidence' => 'float',
     ];
 
