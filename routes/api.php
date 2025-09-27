@@ -15,10 +15,9 @@ Route::middleware('user.public')->group(function () {
 
         // POST /diet/food_entries
         Route::post('/food_entries', [MealsController::class, 'store']);
-
-        Route::post('/test', function (Request $request) {
-            logger()->info('Test endpoint hit', $request->all());
-            return response()->json($request->all());
-        });
+    });
+    Route::post('/test', function (Request $request) {
+        logger()->info('Test endpoint hit', $request->all());
+        return response()->json($request->all());
     });
 });
