@@ -16,7 +16,6 @@ class MealResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'date' => $this->date,
             'label' => $this->label,
             'source' => $this->source,
             'notes' => $this->notes,
