@@ -5,11 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Exercise;
-use App\Models\WorkoutPlan;
-use App\Models\WorkoutDay;
-use App\Models\WorkoutExercise;
-use App\Models\WorkoutLog;
 use App\Models\Meal;
 use App\Models\MealItem;
 
@@ -30,7 +25,7 @@ class SampleDataSeeder extends Seeder
          */
         $meals = [
             [
-                'date'  => $today,
+                'created_at'  => $today,
                 'label' => 'breakfast',
                 'items' => [
                     [
@@ -54,7 +49,7 @@ class SampleDataSeeder extends Seeder
                 ],
             ],
             [
-                'date'  => $today,
+                'created_at'  => $today,
                 'label' => 'lunch',
                 'items' => [
                     [
@@ -69,7 +64,7 @@ class SampleDataSeeder extends Seeder
                 ],
             ],
             [
-                'date'  => $today,
+                'created_at'  => $today,
                 'label' => 'dinner',
                 'items' => [
                     [
@@ -102,7 +97,7 @@ class SampleDataSeeder extends Seeder
                 ],
             ],
             [
-                'date'  => $yesterday,
+                'created_at'  => $yesterday,
                 'label' => 'breakfast',
                 'items' => [
                     [
@@ -131,7 +126,7 @@ class SampleDataSeeder extends Seeder
         foreach ($meals as $m) {
             $meal = Meal::create([
                 'user_id' => $user->id,
-                'date'    => $m['date']->toDateString(),
+                'created_at'    => $m['created_at']->toDateString(),
                 'label'   => $m['label'],
                 'source'  => 'manual',
                 'notes'   => null,
