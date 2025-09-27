@@ -36,7 +36,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 10,
                         'total_carbs_grams' => 52,
                         'total_grams' => 80,
-                        'fat_grams' => 5
+                        'total_fat_grams' => 5
                     ],
                     [
                         'name' => 'Banana',
@@ -58,10 +58,11 @@ class SampleDataSeeder extends Seeder
                         'name' => 'Chicken salad',
                         'quantity' => 1,
                         'unit' => 'bowl',
-                        'calories' => 420,
-                        'protein_grams' => 35,
-                        'carbs_grams' => 18,
-                        'fat_grams' => 24
+                        'total_calories' => 420,
+                        'total_protein_grams' => 35,
+                        'total_carbs_grams' => 18,
+                        'total_fat_grams' => 24,
+                        'total_grams' => 300,
                     ],
                 ],
             ],
