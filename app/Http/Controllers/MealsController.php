@@ -74,10 +74,11 @@ class MealsController extends Controller
             'date' => today()->toDateString(),
             'meals' => MealResource::collection($meals),
             'totals' => [
-                'calories' => $allItems->sum('calories'),
-                'protein_grams' => $allItems->sum('protein_grams'),
-                'carbs_grams' => $allItems->sum('carbs_grams'),
-                'fat_grams' => $allItems->sum('fat_grams'),
+                'total_calories' => $allItems->sum('calories'),
+                'total_protein_grams' => $allItems->sum('protein_grams'),
+                'total_carbs_grams' => $allItems->sum('carbs_grams'),
+                'total_fat_grams' => $allItems->sum('fat_grams'),
+
             ],
             'meals_count' => $meals->count(),
             'items_count' => $allItems->count(),
