@@ -23,10 +23,10 @@ class StoreMealRequest extends FormRequest
             'items.*.name' => ['required', 'string', 'max:255'],
             'items.*.quantity' => ['required', 'numeric', 'min:0'],
             'items.*.unit' => ['required', 'string', 'max:50'],
-            'items.*.calories' => ['required', 'numeric', 'min:0'],
-            'items.*.protein_grams' => ['required', 'numeric', 'min:0'],
-            'items.*.carbs_grams' => ['required', 'numeric', 'min:0'],
-            'items.*.fat_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.total_calories' => ['required', 'numeric', 'min:0'],
+            'items.*.total_protein_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.total_carbs_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.total_fat_grams' => ['required', 'numeric', 'min:0'],
             'items.*.confidence' => ['nullable', 'numeric', 'min:0', 'max:1'],
         ];
     }
