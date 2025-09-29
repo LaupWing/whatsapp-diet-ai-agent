@@ -78,7 +78,7 @@ class MealsController extends Controller
                 'total_protein_grams' => $allItems->sum('total_protein_grams'),
                 'total_carbs_grams' => $allItems->sum('total_carbs_grams'),
                 'total_fat_grams' => $allItems->sum('total_fat_grams'),
-
+                'total_grams' => $allItems->sum('total_grams'),
             ],
             'meals_count' => $meals->count(),
             'items_count' => $allItems->count(),
