@@ -15,17 +15,18 @@ return new class extends Migration
             $table->id();
             $table->foreignId('meal_id')
                 ->constrained()
-                ->cascadeOnDelete();
+                ->onDelete('cascade');
 
             $table->string('name');
-            $table->float('quantity');
-            $table->string('unit');
-            $table->float('total_calories');
-            $table->float('total_protein_grams');
-            $table->float('total_carbs_grams');
-            $table->float('total_fat_grams');
-            $table->float('total_grams');
-            $table->float('confidence');
+            $table->decimal('quantity', 10, 2);
+            $table->string('unit', 50);
+            $table->decimal('estimated_weight_grams', 10, 2)->nullable();
+            $table->decimal('total_calories', 10, 2);
+            $table->decimal('total_protein_grams', 10, 2);
+            $table->decimal('total_carbs_grams', 10, 2);
+            $table->decimal('total_fat_grams', 10, 2);
+            $table->decimal('confidence', 3, 2)->default(0.80);
+            $table->string('source', 50)->default('ai_vision');
 
             $table->timestamps();
         });
