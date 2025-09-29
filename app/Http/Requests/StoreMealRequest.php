@@ -27,6 +27,7 @@ class StoreMealRequest extends FormRequest
             'items.*.total_protein_grams' => ['required', 'numeric', 'min:0'],
             'items.*.total_carbs_grams' => ['required', 'numeric', 'min:0'],
             'items.*.total_fat_grams' => ['required', 'numeric', 'min:0'],
+            'items.*.total_grams' => ['required', 'numeric', 'min:0'],
             'items.*.confidence' => ['nullable', 'numeric', 'min:0', 'max:1'],
         ];
     }
@@ -47,6 +48,7 @@ class StoreMealRequest extends FormRequest
             'items.*.total_protein_grams.required' => 'Item protein_grams is required.',
             'items.*.total_carbs_grams.required' => 'Item carbs_grams is required.',
             'items.*.total_fat_grams.required' => 'Item fat_grams is required.',
+            'items.*.total_grams.required' => 'Item total_grams is required.',
         ];
     }
 }
