@@ -35,7 +35,7 @@ class SampleDataSeeder extends Seeder
                         'total_calories' => 300,
                         'total_protein_grams' => 10,
                         'total_carbs_grams' => 52,
-                        'total_grams' => 80,
+                        'estimated_weight_grams' => 80,
                         'total_fat_grams' => 5
                     ],
                     [
@@ -46,7 +46,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 1.3,
                         'total_carbs_grams' => 27,
                         'total_fat_grams' => 0.3,
-                        'total_grams' => 118,
+                        'estimated_weight_grams' => 118,
                     ],
                 ],
             ],
@@ -62,7 +62,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 35,
                         'total_carbs_grams' => 18,
                         'total_fat_grams' => 24,
-                        'total_grams' => 300,
+                        'estimated_weight_grams' => 300,
                     ],
                 ],
             ],
@@ -78,7 +78,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 39,
                         'total_carbs_grams' => 0,
                         'total_fat_grams' => 22,
-                        'total_grams' => 180,
+                        'estimated_weight_grams' => 180,
                     ],
                     [
                         'name' => 'White rice (cooked)',
@@ -88,7 +88,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 5,
                         'total_carbs_grams' => 57,
                         'total_fat_grams' => 0.4,
-                        'total_grams' => 200,
+                        'estimated_weight_grams' => 200,
                     ],
                     [
                         'name' => 'Broccoli',
@@ -98,7 +98,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 2.4,
                         'total_carbs_grams' => 7,
                         'total_fat_grams' => 0.4,
-                        'total_grams' => 100,
+                        'estimated_weight_grams' => 100,
                     ],
                 ],
             ],
@@ -114,7 +114,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 20,
                         'total_carbs_grams' => 7.8,
                         'total_fat_grams' => 3.8,
-                        'total_grams' => 200,
+                        'estimated_weight_grams' => 200,
                     ],
                     [
                         'name' => 'Honey',
@@ -124,7 +124,7 @@ class SampleDataSeeder extends Seeder
                         'total_protein_grams' => 0,
                         'total_carbs_grams' => 12.4,
                         'total_fat_grams' => 0,
-                        'total_grams' => 15,
+                        'estimated_weight_grams' => 15,
                     ],
 
                 ],
@@ -150,7 +150,7 @@ class SampleDataSeeder extends Seeder
                     'total_protein_grams' => $it['total_protein_grams'],
                     'total_carbs_grams'   => $it['total_carbs_grams'],
                     'total_fat_grams'     => $it['total_fat_grams'],
-                    'total_grams'         => $it['total_grams'],
+                    'estimated_weight_grams'         => $it['estimated_weight_grams'],
                     'confidence'    => 1.0,
                 ]);
             }

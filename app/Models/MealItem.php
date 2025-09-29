@@ -16,18 +16,18 @@ class MealItem extends Model
         'total_protein_grams',
         'total_carbs_grams',
         'total_fat_grams',
-        'total_grams',
+        'estimated_weight_grams',
         'confidence',
     ];
 
     protected $casts = [
-        'quantity' => 'float',
-        'total_calories' => 'float',
-        'total_protein_grams' => 'float',
-        'total_carbs_grams' => 'float',
-        'total_fat_grams' => 'float',
-        'total_grams' => 'float',
-        'confidence' => 'float',
+        'quantity' => 'decimal',
+        'total_calories' => 'decimal',
+        'total_protein_grams' => 'decimal',
+        'total_carbs_grams' => 'decimal',
+        'total_fat_grams' => 'decimal',
+        'estimated_weight_grams' => 'decimal',
+        'confidence' => 'decimal',
     ];
 
     public function meal(): BelongsTo
