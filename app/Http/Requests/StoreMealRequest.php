@@ -48,7 +48,7 @@ class StoreMealRequest extends FormRequest
             'items.*.total_protein_grams.required' => 'Item protein_grams is required.',
             'items.*.total_carbs_grams.required' => 'Item carbs_grams is required.',
             'items.*.total_fat_grams.required' => 'Item fat_grams is required.',
-            'items.*.total_grams.required' => 'Item total_grams is required.',
+            'items.*.estimated_weight_grams' => ['nullable', 'numeric', 'min:0'],
         ];
     }
 }
