@@ -19,10 +19,10 @@ class MealItemResource extends JsonResource
             'name' => $this->name,
             'quantity' => $this->quantity,
             'unit' => $this->unit,
-            'calories' => $this->calories,
-            'protein_grams' => $this->protein_grams,
-            'carbs_grams' => $this->carbs_grams,
-            'fat_grams' => $this->fat_grams,
+            'total_calories' => $this->total_calories,
+            'total_protein_grams' => $this->total_protein_grams,
+            'total_carbs_grams' => $this->total_carbs_grams,
+            'total_fat_grams' => $this->total_fat_grams,
             'confidence' => $this->confidence,
         ];
     }
