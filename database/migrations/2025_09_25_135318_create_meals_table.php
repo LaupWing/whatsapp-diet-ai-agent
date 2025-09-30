@@ -18,8 +18,9 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->string('label')->nullable();
-            $table->string('source')->default('manual');
+            $table->enum('meal_type', ['breakfast', 'lunch', 'dinner', 'snack', 'other'])
+                ->default('other');
+            $table->string('source')->default('ai_vision');
             $table->text('notes')->nullable();
             $table->timestamps();
 
