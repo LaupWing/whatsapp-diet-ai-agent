@@ -18,14 +18,14 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->string('name');
-            $table->decimal('quantity', 10, 2);
+            $table->float('quantity');
             $table->string('unit', 50);
-            $table->decimal('estimated_weight_grams', 10, 2)->nullable();
-            $table->decimal('total_calories', 10, 2);
-            $table->decimal('total_protein_grams', 10, 2);
-            $table->decimal('total_carbs_grams', 10, 2);
-            $table->decimal('total_fat_grams', 10, 2);
-            $table->decimal('confidence', 3, 2)->default(0.80);
+            $table->float('estimated_weight_grams')->nullable();
+            $table->float('total_calories');
+            $table->float('total_protein_grams');
+            $table->float('total_carbs_grams');
+            $table->float('total_fat_grams');
+            $table->float('confidence')->default(0.80);
             $table->string('source', 50)->default('ai_vision');
 
             $table->timestamps();
