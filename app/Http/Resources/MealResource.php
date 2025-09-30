@@ -16,7 +16,7 @@ class MealResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'label' => $this->label,
+            'meal_type' => $this->meal_type,
             'source' => $this->source,
             'notes' => $this->notes,
             'items' => MealItemResource::collection($this->whenLoaded('items')),

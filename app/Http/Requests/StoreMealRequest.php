@@ -15,7 +15,6 @@ class StoreMealRequest extends FormRequest
     {
         logger()->info('Validating StoreMealRequest', $this->all());
         return [
-            'label' => ['required', 'string', 'max:255'],
             'source' => ['nullable', 'string', 'in:manual,api,import'],
             'notes' => ['nullable', 'string', 'max:1000'],
 
@@ -35,7 +34,6 @@ class StoreMealRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'label.required' => 'Meal label is required.',
             'items.required' => 'Items array is required.',
             'items.min' => 'At least one item is required.',
             'items.*.name.required' => 'Item name is required.',

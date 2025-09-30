@@ -26,7 +26,7 @@ class SampleDataSeeder extends Seeder
         $meals = [
             [
                 'created_at'  => $today,
-                'label' => 'breakfast',
+                'meal_type' => 'breakfast',
                 'items' => [
                     [
                         'name' => 'Oatmeal',
@@ -52,7 +52,7 @@ class SampleDataSeeder extends Seeder
             ],
             [
                 'created_at'  => $today,
-                'label' => 'lunch',
+                'meal_type' => 'lunch',
                 'items' => [
                     [
                         'name' => 'Chicken salad',
@@ -68,7 +68,7 @@ class SampleDataSeeder extends Seeder
             ],
             [
                 'created_at'  => $today,
-                'label' => 'dinner',
+                'meal_type' => 'dinner',
                 'items' => [
                     [
                         'name' => 'Salmon fillet',
@@ -104,7 +104,7 @@ class SampleDataSeeder extends Seeder
             ],
             [
                 'created_at'  => $yesterday,
-                'label' => 'breakfast',
+                'meal_type' => 'breakfast',
                 'items' => [
                     [
                         'name' => 'Greek yogurt',
@@ -135,7 +135,7 @@ class SampleDataSeeder extends Seeder
             $meal = Meal::create([
                 'user_id' => $user->id,
                 'created_at'    => $m['created_at']->toDateString(),
-                'label'   => $m['label'],
+                'meal_type'   => $m['meal_type'],
                 'source'  => 'manual',
                 'notes'   => null,
             ]);
