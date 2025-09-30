@@ -35,10 +35,7 @@ class StoreMealRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'date.required' => 'Date is required and cannot be null.',
-            'date.date_format' => 'Date must be in Y-m-d format.',
             'label.required' => 'Meal label is required.',
-
             'items.required' => 'Items array is required.',
             'items.min' => 'At least one item is required.',
             'items.*.name.required' => 'Item name is required.',
