@@ -21,13 +21,13 @@ class MealItem extends Model
     ];
 
     protected $casts = [
-        'quantity' => 'decimal',
-        'total_calories' => 'decimal',
-        'total_protein_grams' => 'decimal',
-        'total_carbs_grams' => 'decimal',
-        'total_fat_grams' => 'decimal',
-        'estimated_weight_grams' => 'decimal',
-        'confidence' => 'decimal',
+        'quantity' => 'float',
+        'total_calories' => 'float',
+        'total_protein_grams' => 'float',
+        'total_carbs_grams' => 'float',
+        'total_fat_grams' => 'float',
+        'estimated_weight_grams' => 'float',
+        'confidence' => 'float',
     ];
 
     public function meal(): BelongsTo
